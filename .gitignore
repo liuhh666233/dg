@@ -15,4 +15,7 @@ _includes/notes_graph.json
 .obsidian/
 
 # Ingore the assets folder
-assets/
+/assets/
+
+# nix
+result

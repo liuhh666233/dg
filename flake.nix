@@ -52,24 +52,11 @@
         };
 
       packages = rec {
-        gelos-site = pkgs.callPackage ./default.nix {};
-        gelos-site-serve = pkgs.writeShellScriptBin "serve" ''
-          echo "Serving on http://localhost:8000"
-          ${pkgs.webfs}/bin/webfsd -F -f index.html -r ${gelos-site}/public
-        '';
-        remove-nbsp = pkgs.writeShellScriptBin "remove-nbsp" ''
-          ${pkgs.gnused}/bin/sed 's/\xC2\xA0/ /g' -i $(find . -name '*.md')
-        '';
-        default = gelos-site;
+        myblog = pkgs.callPackage ./default.nix {};
+
+        default = myblog;
       };
 
-      apps = rec {
-        gelos-site-serve = {
-          type = "app";
-          program = "${packages.gelos-site-serve}/bin/serve";
-        };
-        default = gelos-site-serve;
-      };
 
       });
 }

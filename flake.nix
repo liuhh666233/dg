@@ -43,6 +43,7 @@
             bundix
 
             jekyll
+
           ];
 
           shellHook = ''
@@ -50,13 +51,6 @@
           '';
           
         };
-
-      packages = rec {
-        myblog = pkgs.callPackage ./default.nix {};
-
-        default = myblog;
-      };
-
 
       });
 }
